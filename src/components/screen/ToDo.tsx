@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 
 import { Platform } from 'react-native';
 import { RootStackNavigationProps } from '../navigation/RootStackNavigator';
-import { ToDoList } from '../shared/ToDoList';
+import ToDoList from '../shared/ToDoList';
 import { screenWidth } from '../../utils/Styles';
 import styled from 'styled-components/native';
 
@@ -12,9 +12,11 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const StyledScrollView = styled.ScrollView`
-  flex: 1;
-`;
+const StyledScrollView = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
+    alignItems: 'center',
+  },
+}))``;
 
 const StyledTitle = styled.Text`
   color: white;
