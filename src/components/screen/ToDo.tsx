@@ -1,9 +1,9 @@
-import { AsyncStorage, Platform } from 'react-native';
 import React, { ReactElement } from 'react';
-import { screenWidth, statusBarHeight } from '../../utils/Styles';
 
+import { Platform } from 'react-native';
 import { RootStackNavigationProps } from '../navigation/RootStackNavigator';
 import { ToDoList } from '../shared/ToDoList';
+import { screenWidth } from '../../utils/Styles';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -48,28 +48,10 @@ interface Props {
 
 function ToDo(props: Props): ReactElement {
   const [newToDo, setNewToDo] = React.useState('');
-  const [loadedToDos, setLoadedToDos] = React.useState(true);
-  const [toDos, setToDos] = React.useState({});
 
   const _controlNewToDo = (text) => {
     setNewToDo(text);
   };
-
-  const _loadToDos = async (): Promise<void> => {
-    try {
-      const toDos = await AsyncStorage.getItem('toDos');
-      const parsedToDos = JSON.parse(toDos);
-      setLoadedToDos(true);
-      setToDos(parsedToDos || {});
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
-    }
-  };
-
-  React.useEffect(() => {
-    _loadToDos();
-  }, []);
 
   const _addToDo = () => {
     // eslint-disable-next-line no-console
@@ -88,7 +70,9 @@ function ToDo(props: Props): ReactElement {
           autoCorrect={false}
           onSubmitEditing={_addToDo}
         />
-        <StyledScrollView></StyledScrollView>
+        <StyledScrollView>
+          <ToDoList />
+        </StyledScrollView>
       </StyledCard>
     </Container>
   );

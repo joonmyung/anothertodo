@@ -15,7 +15,11 @@ interface Props {
 }
 
 function ToDoList(props: Props): ReactElement {
-  return <Container>{props.children}</Container>;
+  return (
+    <Container>
+      <styled.Text>Hello I am To Do</styled.Text>
+    </Container>
+  );
 }
 
 export default ToDoList;
