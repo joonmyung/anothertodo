@@ -19,6 +19,15 @@ const StyledText = styled.Text`
   margin: 30px 0px;
 `;
 
+const CompletedText = styled(StyledText)`
+  color: #bbb;
+  text-decoration-line: line-through;
+`;
+
+const UncompletedText = styled(StyledText)`
+  color: #353839;
+`;
+
 const StyledCircle = styled.View`
   width: 30;
   height: 30;
@@ -34,18 +43,22 @@ function ToDoList(props: Props): ReactElement {
   const [isEditing, setIsEditing] = React.useState(false);
   const [isCompleted, setIsCompleted] = React.useState(false);
 
-  _toggleCompleted = () => {
+  const _toggleComplete = () => {
     setIsCompleted(!isCompleted);
   };
 
   return (
     <Container>
-      <TouchableOpacity onPress={_toggleCompleted}>
+      <TouchableOpacity onPress={_toggleComplete}>
         <StyledCircle
-          styles={{ borderColor: isCompleted ? 'black' : 'red' }}
+          style={{ borderColor: isCompleted ? '#bbb' : '#F23657' }}
         ></StyledCircle>
       </TouchableOpacity>
-      <StyledText>{'I am a To Do'}</StyledText>
+      {isCompleted ? (
+        <CompletedText>{'I am a Done To Do'}</CompletedText>
+      ) : (
+        <UncompletedText>{'I am a To Do'}</UncompletedText>
+      )}
     </Container>
   );
 }
