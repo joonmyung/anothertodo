@@ -5,6 +5,7 @@ import {
 
 import Intro from '../screen/Intro';
 import { NavigationContainer } from '@react-navigation/native';
+import NinjaToDo from '../screen/NinjaTodo';
 import React from 'react';
 import Temp from '../screen/Temp';
 import ToDo from '../screen/ToDo';
@@ -40,6 +41,7 @@ function RootNavigator(): React.ReactElement {
         <Stack.Screen name="Intro" component={Intro} />
         <Stack.Screen name="Temp" component={Temp} />
         <Stack.Screen name="ToDo" component={ToDo} />
+        <Stack.Screen name="NinjaToDo" component={NinjaToDo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
