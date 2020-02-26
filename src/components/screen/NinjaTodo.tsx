@@ -2,6 +2,7 @@ import {
   Alert,
   Button,
   FlatList,
+  Keyboard,
   StyleSheet,
   Text,
   TextInput,
@@ -64,13 +65,13 @@ function NinjaTodo(props: Props): ReactElement {
   ]);
   const [text, setText] = useState('');
 
-  const pressHandler = (key) => {
+  const pressHandler = (key): void => {
     setTodos((prevTodos) => {
       return prevTodos.filter((todo) => todo.key !== key);
     });
   };
 
-  const submitHandler = (text) => {
+  const submitHandler = (text): void => {
     if (text.length > 3) {
       setTodos((prevTodos) => {
         return [{ text, key: Math.random().toString() }, ...prevTodos];
@@ -82,17 +83,17 @@ function NinjaTodo(props: Props): ReactElement {
     }
   };
 
-  const changeHandler = (val) => {
+  const changeHandler = (val): void => {
     setText(val);
   };
 
-  const addHandler = () => {
+  const addHandler = (): void => {
     submitHandler(text);
     setText('');
   };
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback onPress={(): void => Keyboard.dismiss()}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>My Todos</Text>
@@ -111,7 +112,7 @@ function NinjaTodo(props: Props): ReactElement {
             <FlatList
               data={todos}
               renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => pressHandler(item.key)}>
+                <TouchableOpacity onPress={(): void => pressHandler(item.key)}>
                   <Text style={styles.item}>{item.text}</Text>
                 </TouchableOpacity>
               )}
