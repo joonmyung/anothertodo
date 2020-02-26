@@ -103,6 +103,16 @@ function Intro(props: Props): React.ReactElement {
         />
         <View style={{ marginTop: 8 }} />
         <Button
+          testID="btn-navigate"
+          onClick={(): void =>
+            props.navigation.navigate('ToDoNinja', {
+              param: 'GO BACK',
+            })
+          }
+          text={getString('NAVIGATE', { name: 'To Do Ninja' })}
+        />
+        <View style={{ marginTop: 8 }} />
+        <Button
           testID="btn-theme"
           onClick={(): void => changeThemeType()}
           text={getString('CHANGE_THEME')}

@@ -21,7 +21,7 @@ const StyledScrollView = styled.ScrollView.attrs(() => ({
 const StyledTitle = styled.Text`
   color: white;
   font-size: 30;
-  margin-top: 20;
+  margin-top: 50;
   margin-bottom: 30;
   font-weight: 400;
 `;
@@ -73,11 +73,19 @@ function ToDo(props: Props): ReactElement {
           onSubmitEditing={_addToDo}
         />
         <StyledScrollView>
-          <ToDoList />
+          <ToDoList text="I am a To Do" />
         </StyledScrollView>
       </StyledCard>
     </Container>
   );
 }
+
+export const ToDoNavigationOptions = (): object => {
+  // options={{ headerShown: false }}
+  return {
+    // header: CustomHeader,
+    headerShown: false,
+  };
+};
 
 export default ToDo;

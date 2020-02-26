@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import Temp from '../screen/Temp';
 import ToDo from '../screen/ToDo';
+import ToDoNinja from '../screen/ToDoNinja';
 import { useThemeContext } from '@dooboo-ui/native-theme';
 
 export type RootStackParamList = {
@@ -15,6 +16,7 @@ export type RootStackParamList = {
   Intro: undefined;
   Temp: { param: string };
   ToDo: { param: string };
+  ToDoNinja: { param: string };
 };
 
 export type RootStackNavigationProps<
@@ -39,7 +41,16 @@ function RootNavigator(): React.ReactElement {
       >
         <Stack.Screen name="Intro" component={Intro} />
         <Stack.Screen name="Temp" component={Temp} />
-        <Stack.Screen name="ToDo" component={ToDo} />
+        <Stack.Screen
+          name="ToDo"
+          component={ToDo}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ToDoNinja"
+          component={ToDoNinja}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
