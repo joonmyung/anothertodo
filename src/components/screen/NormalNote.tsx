@@ -52,7 +52,7 @@ function NormalNote(props: Props): ReactElement {
             renderItem={({ item }) => (
               <List.Item
                 title={item.noteTitle}
-                desc={item.noteDesc}
+                description={item.noteDesc}
                 descNumberOfLines={1}
                 titleStyle={{ fontSize: 20 }}
               />

@@ -1,19 +1,18 @@
 import { FAB, IconButton, Text, TextInput } from 'react-native-paper';
 import React, { ReactElement, useState } from 'react';
+import {
+  RootStackNavigationProps,
+  RootStackParamList,
+} from '../navigation/RootStackNavigator';
 import { StyleSheet, View } from 'react-native';
 
 import Header from '../shared/NinjaHeader';
-import { RootStackNavigationProps } from '../navigation/RootStackNavigator';
+import { RouteProp } from '@react-navigation/core';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
   flex: 1;
   background-color: transparent;
-`;
-
-const StyledText = styled.Text`
-  font-size: 16px;
-  color: blue;
 `;
 
 const styles = StyleSheet.create({
@@ -54,16 +53,16 @@ const styles = StyleSheet.create({
 
 interface Props {
   navigation: RootStackNavigationProps<'AddNotes'>;
+  route: RouteProp<RootStackParamList, 'AddNotes'>;
 }
 
 function Page(props: Props): ReactElement {
-  const navigation = props.navigation;
   const [noteTitle, setNoteTitle] = useState('');
   const [noteDesc, setNoteDesc] = useState('');
 
-  function onSaveNote() {
-    navigation.params.addNotes({ noteTitle, noteDesc });
-    navigation.goBack();
+  function onSaveNote(): void {
+    props.route.params.addNotes({ noteTitle, noteDesc });
+    props.navigation.goBack();
   }
 
   return (
@@ -72,7 +71,7 @@ function Page(props: Props): ReactElement {
       <IconButton
         size={25}
         color="white"
-        onPress={() => navigation.goBack()}
+        onPress={(): void => props.navigation.goBack()}
         style={styles.iconButton}
       />
       <View style={styles.container}>

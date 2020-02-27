@@ -20,7 +20,7 @@ export type RootStackParamList = {
   ToDo: { param: string };
   ToDoNinja: { param: string };
   NormalNote: { param: string };
-  AddNotes: undefined;
+  AddNotes: { addNotes: ({ noteTitle, noteDesc }) => void };
 };
 
 export type RootStackNavigationProps<
