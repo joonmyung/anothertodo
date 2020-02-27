@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Header() {
+export default function Header({ title }) {
   return (
     <View style={styles.header}>
-      <Text style={styles.title}>My Todos</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
   );
 }

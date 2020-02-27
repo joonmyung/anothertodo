@@ -3,8 +3,10 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 
+import AddNotes from '../screen/AddNotes';
 import Intro from '../screen/Intro';
 import { NavigationContainer } from '@react-navigation/native';
+import NormalNote from '../screen/NormalNote';
 import React from 'react';
 import Temp from '../screen/Temp';
 import ToDo from '../screen/ToDo';
@@ -17,6 +19,8 @@ export type RootStackParamList = {
   Temp: { param: string };
   ToDo: { param: string };
   ToDoNinja: { param: string };
+  NormalNote: { param: string };
+  AddNotes: undefined;
 };
 
 export type RootStackNavigationProps<
@@ -37,6 +41,7 @@ function RootNavigator(): React.ReactElement {
           },
           headerTitleStyle: { color: theme.fontColor },
           headerTintColor: theme.tintColor,
+          mode: 'modal',
         }}
       >
         <Stack.Screen name="Intro" component={Intro} />
@@ -49,6 +54,16 @@ function RootNavigator(): React.ReactElement {
         <Stack.Screen
           name="ToDoNinja"
           component={ToDoNinja}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="NormalNote"
+          component={NormalNote}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddNotes"
+          component={AddNotes}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

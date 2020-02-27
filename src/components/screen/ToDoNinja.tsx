@@ -61,7 +61,7 @@ function ToDoNinja(props: Props): ReactElement {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Header />
+        <Header title="Ninja To Do" />
         <View style={styles.content}>
           <AddTodo submitHandler={submitHandler} />
           <View style={styles.list}>

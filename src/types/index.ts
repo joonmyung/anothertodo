@@ -8,6 +8,11 @@ export interface User {
   job: string;
 }
 
+export interface Note {
+  id: string;
+  note: string;
+  desc: string;
+}
 interface IconProps {
   style?: StyleProp<TextStyle>;
   width?: number | string;
